@@ -9,9 +9,6 @@ const Footer = () => {
         <Typography variant="h6" align="center" gutterBottom>
           ISKCON Srisailam
         </Typography>
-        <Typography variant="subtitle1" align="center" color="text.secondary" component="p">
-          Spreading the message of Bhagavad-gita
-        </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
           <Link href="https://facebook.com" color="inherit" sx={{ mx: 1 }}>
             <Facebook />
@@ -25,8 +22,8 @@ const Footer = () => {
         </Box>
         <Typography variant="body2" color="text.secondary" align="center" sx={{ mt: 2 }}>
           {'Copyright © '}
-          <Link color="inherit" href="https://iskcon.org/">
-            ISKCON
+          <Link color="inherit">
+            ISKCON Srisailam
           </Link>{' '}
           {new Date().getFullYear()}
           {'.'}
@@ -37,4 +34,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

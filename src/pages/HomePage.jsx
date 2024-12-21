@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import WelcomeImage from '../assets/welcome.jpeg'; // Adjust the path to your image file
 import Donation from '../components/Donation';
+import Gallery from '../components/Gallery';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -19,13 +20,14 @@ const HomePage = () => {
             width: '100%',
             height: 'auto',
             mt: 2,
-            mb:0
+            mb: 0
           }}
         />
-        <Typography variant="body1"  gutterBottom sx={{ width: '100%',backgroundColor:'#FF9933',fontWeight:'bold'}} textAlign={'center'}>
+        <Typography variant="body1" gutterBottom sx={{ width: '100%', backgroundColor: '#FF9933', fontWeight: 'bold' }} textAlign={'center'}>
           We request you to join our hands to support this initiative for keeping this distribution enduring.
         </Typography>
-        <Donation/>
+        <Donation />
+        <Gallery />
         <Button
           variant="contained"
           color="primary"
