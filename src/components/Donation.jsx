@@ -10,9 +10,9 @@ import {
   Divider,
   CardMedia,
 } from "@mui/material";
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import QRImage from '../assets/qrcode.jpg';
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import QRImage from "../assets/qrcode.jpg";
 
 const donations = [
   { meals: 50, amount: 1000 },
@@ -23,12 +23,24 @@ const donations = [
 
 const Donation = () => {
   const { t } = useTranslation();
+
   return (
-    <Box p={3}>
-      <Typography variant="h4" align="center" gutterBottom>
+    <Box p={4} sx={{ backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
+      <Typography
+        variant="h4"
+        align="center"
+        gutterBottom
+        sx={{
+          fontWeight: "bold",
+          color: "#333",
+          textTransform: "uppercase",
+          marginBottom: "2rem",
+        }}
+      >
         Donate to ISKCON to Feed Poor
       </Typography>
-      <Grid container spacing={3}>
+
+      <Grid container spacing={4}>
         {/* Donation Options */}
         {donations.map((donation, index) => (
           <Grid item xs={12} sm={6} md={6} lg={3} key={index}>
@@ -40,20 +52,24 @@ const Donation = () => {
                 display: "flex",
                 flexDirection: "column",
                 transition: "transform 0.3s, box-shadow 0.3s",
-                '&:hover': {
+                "&:hover": {
                   transform: "scale(1.05)",
-                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                  boxShadow: "0 6px 20px rgba(0, 0, 0, 0.2)",
                 },
               }}
             >
               <CardContent>
-                <Typography variant="h6" align="center">
+                <Typography
+                  variant="h6"
+                  align="center"
+                  sx={{ fontWeight: "bold" }}
+                >
                   Donate {donation.meals} Meals
                 </Typography>
                 <Typography
                   variant="h5"
                   align="center"
-                  sx={{ color: "#FF9933", fontWeight: "bold" }}
+                  sx={{ color: "#FF9933", fontWeight: "bold", mt: 1 }}
                 >
                   ₹ {donation.amount.toLocaleString()}
                 </Typography>
@@ -61,75 +77,88 @@ const Donation = () => {
               <CardActions sx={{ justifyContent: "center", marginTop: "auto" }}>
                 <Button
                   variant="contained"
-                  color="primary"
                   size="large"
                   component={Link}
                   to="/donate"
                   sx={{
                     backgroundColor: "#FF9933",
                     color: "#fff",
-                    '&:hover': {
+                    fontWeight: "bold",
+                    "&:hover": {
                       backgroundColor: "#FF7F00",
                       color: "#fff",
                     },
                   }}
                 >
-                  {t('donateNow')}
+                  {t("donateNow")}
                 </Button>
               </CardActions>
             </Card>
           </Grid>
         ))}
 
-        {/* Bank Transfer Details and Image */}
-        <Grid container item xs={12} spacing={3}>
+        {/* Bank Transfer Details and QR Image */}
+        <Grid container item xs={12} spacing={4} mt={4}>
           {/* Bank Details */}
-          <Grid item xs={12} sm={12} md={12} lg={8} style={{ display: "flex" }}>
-            <Card style={{ flexGrow: 1 }}>
+          <Grid item xs={12} sm={12} md={12} lg={8}>
+            <Card sx={{ border: "1px solid #FF9933", boxShadow: "none" }}>
               <CardContent>
-                <Typography variant="h6" align="center">
-                  <strong>Donation Through Bank (NEFT/RTGS)</strong>
+                <Typography
+                  variant="h6"
+                  align="center"
+                  sx={{
+                    fontWeight: "bold",
+                    textTransform: "uppercase",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Donation Through Bank (NEFT/RTGS)
                 </Typography>
                 <Typography variant="body1">
-                  <strong>Bank Name: Union Bank </strong>
+                  <strong>Bank Name:</strong> Union Bank
                 </Typography>
                 <Typography variant="body1">
-                  <strong>Account Name: ISKCON DORNALA</strong>
+                  <strong>Account Name:</strong> ISKCON DORNALA
                 </Typography>
                 <Typography variant="body1">
-                  <strong>Account Number: 309612010001416</strong>
+                  <strong>Account Number:</strong> 309612010001416
                 </Typography>
                 <Typography variant="body1">
-                  <strong>IFSC Code: UBIN0830968</strong>
+                  <strong>IFSC Code:</strong> UBIN0830968
                 </Typography>
-                <Divider sx={{ mt: 2, mb: 2 }} />
-                <Typography variant="h6" color="#ff9933">
-                  80G Available As Per Income Tax Act 1961 And Rules Made Thereunder
+                <Divider sx={{ my: 2 }} />
+                <Typography variant="h6" sx={{ color: "#FF9933" }}>
+                  80G Available As Per Income Tax Act 1961 And Rules Made
+                  Thereunder
                 </Typography>
-                <Typography variant="body2" color="textSecondary">
+                <Typography variant="body2" color="text.secondary">
                   Income Tax Exemption (80G) Number: AAATI0017PF20219
                 </Typography>
-                <Divider sx={{ mt: 2, mb: 2 }} />
+                <Divider sx={{ my: 2 }} />
                 <Typography
                   variant="h6"
                   color="error"
-                  style={{ fontWeight: "bold" }}
+                  sx={{ fontWeight: "bold" }}
                 >
-                  80G Benefits Cannot Be Availed On Paytm Donations Except Paytm UPI
-                  Transfer
+                  80G Benefits Cannot Be Availed On Paytm Donations Except Paytm
+                  UPI Transfer
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
 
-          {/* Image */}
-          <Grid item xs={12} sm={12} md={12} lg={4} style={{ display: "flex" }}>
-            <Card style={{ flexGrow: 1 }}>
+          {/* QR Code Image */}
+          <Grid item xs={12} sm={12} md={12} lg={4}>
+            <Card sx={{ boxShadow: "none" }}>
               <CardMedia
                 component="img"
                 image={QRImage}
-                alt="Donation Image"
-                style={{ height: "100%", objectFit: "cover" }} // Ensures image fits properly
+                alt="Donation QR Code"
+                sx={{
+                  height: "100%",
+                  objectFit: "cover",
+                  border: "1px solid #FF9933",
+                }}
               />
             </Card>
           </Grid>

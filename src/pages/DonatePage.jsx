@@ -1,5 +1,16 @@
 import React from 'react';
-import { Container, Typography, Box, TextField, Button, MenuItem, Grid, Checkbox, FormControlLabel, Divider } from '@mui/material';
+import {
+  Container,
+  Typography,
+  Box,
+  TextField,
+  Button,
+  MenuItem,
+  Grid,
+  Checkbox,
+  FormControlLabel,
+  Divider,
+} from '@mui/material';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -49,16 +60,31 @@ const DonatePage = () => {
 
   return (
     <Container maxWidth="md">
-      <Box sx={{ my: 4, p: 3, border: '1px solid #ddd', borderRadius: '8px', backgroundColor: '#f9f9f9' }}>
-        <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ mb: 4 }}>
+      <Box
+        sx={{
+          my: 4,
+          p: 4,
+          border: '1px solid #ddd',
+          borderRadius: '8px',
+          backgroundColor: '#f9f9f9',
+        }}
+      >
+        <Typography
+          variant="h4"
+          align="center"
+          gutterBottom
+          sx={{ mb: 4, fontWeight: 'bold', color: '#333' }}
+        >
           Proceed to Donation
         </Typography>
-        <Grid container spacing={3}>
+
+        <Grid container spacing={4}>
+          {/* Donor Information */}
           <Grid item xs={12}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#555' }}>
               Donor Information
             </Typography>
-            <Box sx={{ p: 2, border: '1px solid #ddd', borderRadius: '8px', backgroundColor: '#fff' }}>
+            <Box sx={{ p: 3, border: '1px solid #ddd', borderRadius: '8px', backgroundColor: '#fff' }}>
               <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
@@ -214,22 +240,57 @@ const DonatePage = () => {
               </form>
             </Box>
           </Grid>
+
+          {/* Donation Information */}
           <Grid item xs={12}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#555' }}>
               Donation Information
             </Typography>
-            <Box sx={{ p: 2, border: '1px solid #ddd', borderRadius: '8px', backgroundColor: '#fff' }}>
-              <Typography variant="body1">ISKCON Charity Donation - ₹1000 × 1</Typography>
-              <Divider sx={{ my: 1 }} />
-              <Typography variant="body1"><strong>Subtotal:</strong> ₹1000</Typography>
-              <Typography variant="body1"><strong>Total:</strong> ₹1000</Typography>
-              <Box sx={{ mt: 2 }}>
-                <Typography variant="body2">Pay securely via UPI, Credit/Debit Card, or Internet Banking.</Typography>
-              </Box>
+            <Box
+              sx={{
+                p: 3,
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                backgroundColor: '#fff',
+              }}
+            >
+              <Typography variant="body1">
+                ISKCON Charity Donation - ₹1000 × 1
+              </Typography>
+              <Divider sx={{ my: 2 }} />
+              <Typography variant="body1">
+                <strong>Subtotal:</strong> ₹1000
+              </Typography>
+              <Typography variant="body1">
+                <strong>Total:</strong> ₹1000
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ mt: 2, color: 'text.secondary' }}
+              >
+                Pay securely via UPI, Credit/Debit Card, or Internet Banking.
+              </Typography>
             </Box>
           </Grid>
+
+          {/* Submit Button */}
           <Grid item xs={12}>
-            <Button color="primary" variant="contained" fullWidth type="submit" sx={{ mt: 3 }} onClick={formik.handleSubmit}>
+            <Button
+              color="primary"
+              variant="contained"
+              fullWidth
+              type="submit"
+              sx={{
+                mt: 3,
+                py: 1.5,
+                backgroundColor: '#FF9933',
+                fontWeight: 'bold',
+                '&:hover': {
+                  backgroundColor: '#FF7F00',
+                },
+              }}
+              onClick={formik.handleSubmit}
+            >
               Donate Now
             </Button>
           </Grid>
@@ -239,4 +300,4 @@ const DonatePage = () => {
   );
 };
 
-export default DonatePage;
+export default DonatePage
